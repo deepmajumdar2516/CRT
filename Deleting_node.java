@@ -1,0 +1,60 @@
+import java.util.*;
+class Node{
+    int data;
+    Node next;
+    Node(int ele){
+        data=ele;
+        next=null;
+    }
+}
+class LinkedList{
+    static Node head=null;
+    static Node tail=null;
+    public static void create(int data){
+    Node nn=new Node(data);
+        if(head==null){
+            head=nn;
+            tail=nn;
+        }else{
+            tail.next=nn;
+            tail=nn;
+        }
+    }
+    public static void delete(int m){
+        for(int i=1;i<=m;i++){
+            if(head!=null){
+            head=head.next;
+        }
+        else{
+            break;
+        }
+        }
+    }
+    public static void display(){
+        if(head==null){
+            System.out.print("List is empty");
+            return;
+        }
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+}
+
+public class Deleting_node {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int ele;
+        LinkedList obj=new LinkedList();
+        for(int i=0;i<n;i++){
+            ele=sc.nextInt();
+            obj.create(ele);
+        }
+        int pos=sc.nextInt();
+        obj.delete(pos);
+        obj.display();
+    }
+}
